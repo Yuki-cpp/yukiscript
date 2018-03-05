@@ -1,0 +1,26 @@
+
+(function pgcd (a b)
+(
+
+	(function printl (x)
+	(
+		(print x)
+		(print '\n')
+	))
+	
+	(if (== a b)
+	(
+		(printl a)
+		(set ret a)
+	))
+	(if (> a b)
+	(
+		(set ret (pgcd ((- a b) b)))
+	))
+	(if (< a b)
+	(
+		(set ret (pgcd (a (- b a))))
+	))
+))
+
+(pgcd (15 14))

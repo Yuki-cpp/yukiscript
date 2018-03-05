@@ -1,0 +1,41 @@
+
+(function printl (x)
+(
+	(print x)
+	(print '\n')
+))
+
+
+(function inc (x)
+(
+	(set x (+ x 1))
+))
+
+(function is_prime (x)
+(
+	(var cpt)
+	(set cpt 2)
+	(set ret true)
+	
+	(while (< cpt x)
+	(
+		(if (== 0 (% x cpt))
+		(
+			(set ret false)
+		))
+		(inc (cpt))
+	))
+))
+
+
+(var cpt)
+(set cpt 2)
+
+(while (< cpt 100)
+(
+	(if (is_prime (cpt))
+	(
+		(printl (cpt))
+	))
+	(inc (cpt))
+))

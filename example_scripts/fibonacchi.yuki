@@ -1,0 +1,27 @@
+(function inc (x)
+(
+	(set x (+ x 1))
+))
+
+
+(var val_1)
+(var val_2)
+
+(set val_1 0)
+(set val_2 1)
+
+(print val_1)
+(print val_2)
+
+(var cpt)
+(set cpt 2)
+
+(while (< cpt 20)
+(
+	(var tmp)
+	(set tmp (+ val_1 val_2))
+	(print tmp)
+	(set val_1 val_2)
+	(set val_2 tmp)
+	(inc (cpt))
+))
