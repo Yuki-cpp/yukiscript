@@ -18,7 +18,7 @@ class context
 {
 public:
 
-	using function_t = std::tuple<yuki::script::stmt::executable_stmt*, std::vector<std::string>>;
+	using function_t = std::tuple<yuki::statements::executable_stmt*, std::vector<std::string>>;
 
 
 	explicit context();
@@ -32,7 +32,7 @@ public:
 	yuki::type::variable & get_variable(const std::string & identifier) const;
 
 
-	void declare_function(const std::string & identifier, yuki::script::stmt::executable_stmt* body, const std::vector<std::string> & args);
+	void declare_function(const std::string & identifier, yuki::statements::executable_stmt* body, const std::vector<std::string> & args);
 	function_t get_function(const std::string & identifier) const;
 
 	void push_block();

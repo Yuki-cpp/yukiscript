@@ -55,7 +55,7 @@ yuki::type::variable & yuki::context::context::get_variable(const std::string& i
 
 
 
-void yuki::context::context::declare_function(const std::string& identifier, yuki::script::stmt::executable_stmt* body, const std::vector<std::string> & args)
+void yuki::context::context::declare_function(const std::string& identifier, yuki::statements::executable_stmt* body, const std::vector<std::string> & args)
 {
 	if(is_function_declared(identifier))
 	{
@@ -65,7 +65,7 @@ void yuki::context::context::declare_function(const std::string& identifier, yuk
 }
 
 
-std::tuple<yuki::script::stmt::executable_stmt *, std::vector<std::string> > yuki::context::context::get_function(const std::string& identifier) const
+std::tuple<yuki::statements::executable_stmt *, std::vector<std::string> > yuki::context::context::get_function(const std::string& identifier) const
 {
 	for(auto it = m_known_functions.rbegin(); it != m_known_functions.rend(); ++it)
 	{
