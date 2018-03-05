@@ -30,3 +30,26 @@
 *.exe
 *.out
 *.app
+
+# Ignore stuff controlled by cmake
+CMake*
+*.cmake
+!CMakeLists.txt
+/Makefile
+!/cmake/*.cmake
+
+# Project files
+.project
+.cproject
+.kdev4/
+*.kdev4
+*.kdev_include_paths
+.settings/
+
+# Build and binary files
+build/
+release/
+bin/
+*.pyc
+*.so
+*.o
