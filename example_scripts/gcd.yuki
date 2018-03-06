@@ -1,7 +1,5 @@
-
-(function pgcd (a b)
+(function gcd (a b)
 (
-
 	(function printl (x)
 	(
 		(print x)
@@ -15,12 +13,12 @@
 	))
 	(if (> a b)
 	(
-		(set ret (pgcd ((- a b) b)))
+		(set ret (gcd ((- a b) b)))
 	))
 	(if (< a b)
 	(
-		(set ret (pgcd (a (- b a))))
+		(set ret (gcd (a (- b a))))
 	))
 ))
 
-(pgcd (15 14))
+(gcd (15 14))
