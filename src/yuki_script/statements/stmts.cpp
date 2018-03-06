@@ -3,9 +3,9 @@
 #include <vector>
 #include <memory>
 
-#include "variable.hpp"
-#include "context.hpp"
-#include "context_stack.hpp"
+#include "type_support/variable.hpp"
+#include "context/context.hpp"
+#include "context/context_stack.hpp"
 
 
 yuki::statements::compound_stmt::compound_stmt(std::vector<std::unique_ptr<executable_stmt> > && sub_statements):

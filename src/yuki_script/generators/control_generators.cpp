@@ -3,7 +3,7 @@
 #include <cassert>
 
 #include "generators.hpp"
-#include "token_utils.hpp"
+#include "utils/token_utils.hpp"
 
 std::unique_ptr<yuki::statements::while_stmt> yuki::generators::generate_while_stmt(const std::vector<std::string>& tokens)
 {
@@ -16,7 +16,7 @@ std::unique_ptr<yuki::statements::while_stmt> yuki::generators::generate_while_s
 		return nullptr;
 	}
 
-	const auto toks = yuki::script::utils::separate_tokens(tokens[2]);
+	const auto toks = yuki::utils::separate_tokens(tokens[2]);
 	auto body = generate_compound_stmt(toks);
 	if(!body)
 	{
@@ -38,7 +38,7 @@ std::unique_ptr<yuki::statements::if_stmt> yuki::generators::generate_if_stmt(co
 		return nullptr;
 	}
 
-	const auto toks = yuki::script::utils::separate_tokens(tokens[2]);
+	const auto toks = yuki::utils::separate_tokens(tokens[2]);
 	auto body = generate_compound_stmt(toks);
 	if(!body)
 	{

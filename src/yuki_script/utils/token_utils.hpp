@@ -5,7 +5,7 @@
 #include <vector>
 
 
-namespace yuki::script::utils
+namespace yuki::utils
 {
 
 bool is_single_statement(const std::string & code);

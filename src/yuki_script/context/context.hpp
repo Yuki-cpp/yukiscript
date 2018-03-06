@@ -7,9 +7,9 @@
 #include <vector>
 #include <memory>
 
-#include "variable.hpp"
+#include "type_support/variable.hpp"
 
-#include "stmts.hpp"
+#include "statements/stmts.hpp"
 
 namespace yuki::context
 {
@@ -38,8 +38,8 @@ public:
 	void push_block();
 	void pop_block();
 
-	bool is_function_declared(const std::string & identifier) const;
-	bool is_variable_declared(const std::string & identifier) const;
+	bool is_function_declared(const std::string & identifier, bool current_scope_only = true) const;
+	bool is_variable_declared(const std::string & identifier, bool current_scope_only = true) const;
 
 private:
 	using variable_block_context = std::map<std::string, std::unique_ptr<yuki::type::variable>>;

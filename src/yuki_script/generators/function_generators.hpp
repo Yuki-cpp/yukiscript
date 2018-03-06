@@ -4,8 +4,8 @@
 #include <memory>
 #include <string>
 
-#include "function_stmts.hpp"
-#include "stmts.hpp"
+#include "statements/function_stmts.hpp"
+#include "statements/stmts.hpp"
 
 namespace yuki::generators
 {

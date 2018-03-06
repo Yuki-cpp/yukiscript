@@ -40,24 +40,24 @@ yuki::context::context::function_t yuki::context::context_stack::get_function(co
 {
 	for(auto it = m_contexts.rbegin(); it != m_contexts.rend(); ++it)
 	{
-		if(it->is_function_declared(identifier))
+		if(it->is_function_declared(identifier, false))
 		{
 			return it->get_function(identifier);
 		}
 	}
-	throw std::runtime_error(identifier + " was not declared declared in this scope");
+	throw std::runtime_error(identifier + " : This function was not declared declared in this scope");
 }
 
 yuki::type::variable & yuki::context::context_stack::get_variable(const std::string& identifier) const
 {
-	if(m_contexts.back().is_variable_declared(identifier))
+	if(m_contexts.back().is_variable_declared(identifier, false))
 	{
 		return m_contexts.back().get_variable(identifier);
 	}
-	else if(m_contexts.front().is_variable_declared(identifier))
+	else if(m_contexts.front().is_variable_declared(identifier, false))
 	{
 		return m_contexts.front().get_variable(identifier);
 	}
 
-	throw std::runtime_error(identifier + " was not declared declared in this scope");
+	throw std::runtime_error(identifier + " : This variable was not declared declared in this scope");
 }

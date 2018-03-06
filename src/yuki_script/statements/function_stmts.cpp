@@ -1,7 +1,7 @@
 #include "function_stmts.hpp"
 
-#include "context_stack.hpp"
-#include "context.hpp"
+#include "context/context_stack.hpp"
+#include "context/context.hpp"
 
 namespace
 {

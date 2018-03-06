@@ -4,7 +4,7 @@
 #include <vector>
 #include <memory>
 
-#include "variable.hpp"
+#include "type_support/variable.hpp"
 
 namespace yuki::context
 {

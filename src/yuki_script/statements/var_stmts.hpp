@@ -5,7 +5,7 @@
 #include <string>
 
 #include "stmts.hpp"
-#include "variable.hpp"
+#include "type_support/variable.hpp"
 
 namespace yuki::statements
 {

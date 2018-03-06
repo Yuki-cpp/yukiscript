@@ -6,7 +6,7 @@
 #include <algorithm>
 #include <cassert>
 
-#include "stmts.hpp"
+#include "statements/stmts.hpp"
 
 
 yuki::context::context::context()
@@ -15,14 +15,45 @@ yuki::context::context::context()
 }
 
 
-bool yuki::context::context::is_variable_declared(const std::string& identifier) const
+bool yuki::context::context::is_variable_declared(const std::string& identifier, bool current_scope_only) const
 {
-	return m_known_variables.back().find(identifier) != m_known_variables.back().end();
+	if(current_scope_only)
+	{
+		return m_known_variables.back().find(identifier) != m_known_variables.back().end();
+	}
+
+	for(auto it = m_known_variables.rbegin(); it != m_known_variables.rend(); ++it)
+	{
+		const variable_block_context & scope = *it;
+		auto it2 = scope.find(identifier);
+		if(it2 != scope.end())
+		{
+			return true;
+		}
+	}
+
+	return false;
+
 }
 
-bool yuki::context::context::is_function_declared(const std::string& identifier) const
+bool yuki::context::context::is_function_declared(const std::string& identifier, bool current_scope_only) const
 {
-	return m_known_functions.back().find(identifier) != m_known_functions.back().end();
+	if(current_scope_only)
+	{
+		return m_known_functions.back().find(identifier) != m_known_functions.back().end();
+	}
+
+	for(auto it = m_known_functions.rbegin(); it != m_known_functions.rend(); ++it)
+	{
+		const function_block_context & scope = *it;
+		auto it2 = scope.find(identifier);
+		if(it2 != scope.end())
+		{
+			return true;
+		}
+	}
+
+	return false;
 }
 
 

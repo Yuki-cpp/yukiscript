@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-#include "stmts.hpp"
+#include "statements/stmts.hpp"
 
 namespace yuki::generators
 {

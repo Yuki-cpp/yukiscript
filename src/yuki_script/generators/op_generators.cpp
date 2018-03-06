@@ -3,15 +3,15 @@
 #include <cassert>
 
 #include "generators.hpp"
-#include "token_utils.hpp"
+#include "utils/token_utils.hpp"
 
-#include "binary_op_stmts.hpp"
-#include "unary_op_stmts.hpp"
+#include "statements/binary_op_stmts.hpp"
+#include "statements/unary_op_stmts.hpp"
 
 std::unique_ptr<yuki::statements::evaluable_stmt> yuki::generators::generate_binary_op_stmt(const std::vector<std::string>& tokens)
 {
 	assert(tokens.size() == 3);
-	assert(yuki::script::utils::is_binary_operator(tokens[0]));
+	assert(yuki::utils::is_binary_operator(tokens[0]));
 
 	std::unique_ptr<yuki::statements::evaluable_stmt> lhs = generate_evaluable_stmt(tokens[1]);
 	std::unique_ptr<yuki::statements::evaluable_stmt> rhs = generate_evaluable_stmt(tokens[2]);
@@ -54,7 +54,7 @@ std::unique_ptr<yuki::statements::evaluable_stmt> yuki::generators::generate_bin
 std::unique_ptr<yuki::statements::evaluable_stmt> yuki::generators::generate_unary_op_stmt(const std::vector<std::string>& tokens)
 {
 	assert(tokens.size() == 2);
-	assert(yuki::script::utils::is_unary_operator(tokens[0]));
+	assert(yuki::utils::is_unary_operator(tokens[0]));
 
 	std::unique_ptr<yuki::statements::evaluable_stmt> val = generate_evaluable_stmt(tokens[1]);
 	if(val)

@@ -7,7 +7,7 @@
 #include <boost/algorithm/string/trim.hpp>
 #include <boost/algorithm/string.hpp>
 
-bool  yuki::script::utils::is_single_statement(const std::string& code)
+bool  yuki::utils::is_single_statement(const std::string& code)
 {
 	assert(code != "");
 
@@ -39,7 +39,7 @@ bool  yuki::script::utils::is_single_statement(const std::string& code)
 }
 
 
-std::vector<std::string> yuki::script::utils::separate_tokens(std::string code)
+std::vector<std::string> yuki::utils::separate_tokens(std::string code)
 {
 	if(is_single_statement(code))
 	{
@@ -103,35 +103,35 @@ std::vector<std::string> yuki::script::utils::separate_tokens(std::string code)
 }
 
 
-bool yuki::script::utils::is_keyword(const std::string& id)
+bool yuki::utils::is_keyword(const std::string& id)
 {
 	static std::vector<std::string> keywords {"var", "function", "set", "print", "while", "if"};
 	return std::find(keywords.begin(), keywords.end(), id) != keywords.end();
 }
 
-bool yuki::script::utils::is_binary_operator(const std::string& id)
+bool yuki::utils::is_binary_operator(const std::string& id)
 {
 	static std::vector<std::string> operators {"&&", "||", "+", "-", "/", "*", "<", "<=", ">" , ">=" , "==", "!=", "%"};
 	return std::find(operators.begin(), operators.end(), id) != operators.end();
 }
 
-bool yuki::script::utils::is_unary_operator(const std::string& id)
+bool yuki::utils::is_unary_operator(const std::string& id)
 {
 	static std::vector<std::string> operators {"-", "!"};
 	return std::find(operators.begin(), operators.end(), id) != operators.end();
 }
 
-bool yuki::script::utils::is_operator(const std::string& id)
+bool yuki::utils::is_operator(const std::string& id)
 {
 	return is_unary_operator(id) || is_binary_operator(id);
 }
 
-bool yuki::script::utils::is_bool_literal(const std::string& id)
+bool yuki::utils::is_bool_literal(const std::string& id)
 {
 	return id == "true" || id == "false";
 }
 
-bool yuki::script::utils::is_int_literal(const std::string& id)
+bool yuki::utils::is_int_literal(const std::string& id)
 {
 	std::istringstream iss(id);
 	int f;
@@ -139,7 +139,7 @@ bool yuki::script::utils::is_int_literal(const std::string& id)
 	return iss.eof() && !iss.fail();
 }
 
-bool yuki::script::utils::is_double_literal(const std::string& id)
+bool yuki::utils::is_double_literal(const std::string& id)
 {
 	if(is_int_literal(id))
 	{
@@ -152,7 +152,7 @@ bool yuki::script::utils::is_double_literal(const std::string& id)
 	return iss.eof() && !iss.fail();
 }
 
-bool yuki::script::utils::is_literal(const std::string& id)
+bool yuki::utils::is_literal(const std::string& id)
 {
 	return is_double_literal(id) ||
 	       is_int_literal(id) ||
@@ -161,7 +161,7 @@ bool yuki::script::utils::is_literal(const std::string& id)
 	       is_string_literal(id);
 }
 
-bool yuki::script::utils::is_user_defined(const std::string& id)
+bool yuki::utils::is_user_defined(const std::string& id)
 {
 	return id != "" &&
 	       (id[0] >= 'a' && id[0] <= 'z') &&
@@ -171,12 +171,12 @@ bool yuki::script::utils::is_user_defined(const std::string& id)
 }
 
 
-bool yuki::script::utils::is_string_literal(const std::string& id)
+bool yuki::utils::is_string_literal(const std::string& id)
 {
 	return id.size() >= 2 && id[0] == '"' && id[id.size() - 1] == '"';
 }
 
-bool yuki::script::utils::is_char_literal(const std::string& id)
+bool yuki::utils::is_char_literal(const std::string& id)
 {
 	bool ret = id.size() > 2;
 	ret = ret && id.size() <= 4;
@@ -190,14 +190,14 @@ bool yuki::script::utils::is_char_literal(const std::string& id)
 }
 
 
-void yuki::script::utils::replace_special_char(std::string & str)
+void yuki::utils::replace_special_char(std::string & str)
 {
 	boost::replace_all(str, "\\n", "\n");
 	boost::replace_all(str, "\\t", "\t");
 	boost::replace_all(str, "\\a", "\a");
 }
 
-char yuki::script::utils::as_char(const std::string& id)
+char yuki::utils::as_char(const std::string& id)
 {
 	assert(is_char_literal(id));
 	auto tmp = id;
