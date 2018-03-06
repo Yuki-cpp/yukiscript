@@ -25,7 +25,7 @@ m_identifier(identifier)
 
 yuki::type::variable yuki::statements::get_var_stmt::evaluate(yuki::context::context_stack& stack)
 {
-	return stack.current_context().get_variable(m_identifier);
+	return stack.get_variable(m_identifier);
 }
 
 
@@ -42,7 +42,7 @@ void yuki::statements::def_var_stmt::execute(yuki::context::context_stack& stack
 
 
 
-yuki::statements::set_stmt::set_stmt(const std::string& identifier, std::unique_ptr<evaluable_stmt> && rhs):
+yuki::statements::set_stmt::set_stmt(const std::string& identifier, std::unique_ptr<yuki::statements::evaluable_stmt> && rhs):
 m_identifier(identifier),
 m_rhs(std::move(rhs))
 {}
@@ -50,11 +50,11 @@ m_rhs(std::move(rhs))
 
 void yuki::statements::set_stmt::execute(yuki::context::context_stack& stack)
 {
-	stack.current_context().get_variable(m_identifier) = m_rhs->evaluate(stack);
+	stack.get_variable(m_identifier) = m_rhs->evaluate(stack);
 }
 
 
-yuki::statements::print_stmt::print_stmt(std::unique_ptr<evaluable_stmt> && value):
+yuki::statements::print_stmt::print_stmt(std::unique_ptr<yuki::statements::evaluable_stmt> && value):
 m_value(std::move(value))
 {}
 

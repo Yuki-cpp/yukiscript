@@ -38,11 +38,11 @@ yuki::type::variable yuki::statements::call_function_stmt::evaluate(yuki::contex
 		//Set up arguments
 		evaluator args_evaluator
 		{
-			[&base_context](const std::string & value)
+			[&stack](const std::string & value)
 			{
-				return base_context.get_variable(value);
+				return stack.get_variable(value);
 			},
-			[&stack](std::unique_ptr<evaluable_stmt> & value)
+			[&stack](std::unique_ptr<yuki::statements::evaluable_stmt> & value)
 			{
 				return value->evaluate(stack);
 			}
@@ -66,7 +66,7 @@ yuki::type::variable yuki::statements::call_function_stmt::evaluate(yuki::contex
 				{
 					base_context.get_variable(value) = var;
 				},
-				[](std::unique_ptr<evaluable_stmt> & value)
+				[](std::unique_ptr<yuki::statements::evaluable_stmt> & value)
 				{
 					(void)value;
 				}
@@ -87,7 +87,7 @@ yuki::type::variable yuki::statements::call_function_stmt::evaluate(yuki::contex
 
 
 
-yuki::statements::def_function_stmt::def_function_stmt(const std::string & identifier, std::vector<std::string> && args, std::unique_ptr<executable_stmt> && body):
+yuki::statements::def_function_stmt::def_function_stmt(const std::string & identifier, std::vector<std::string> && args, std::unique_ptr<yuki::statements::executable_stmt> && body):
 m_identifier(identifier),
 m_args(std::move(args)),
 m_body(std::move(body))

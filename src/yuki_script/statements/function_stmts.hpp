@@ -12,10 +12,10 @@
 namespace yuki::statements
 {
 
-using function_arg_t = std::variant<std::string, std::unique_ptr<evaluable_stmt>>;
+using function_arg_t = std::variant<std::string, std::unique_ptr<yuki::statements::evaluable_stmt>>;
 
 
-class call_function_stmt : public evaluable_stmt
+class call_function_stmt : public yuki::statements::evaluable_stmt
 {
 public:
 	explicit call_function_stmt(const std::string & identifier, std::vector<function_arg_t> && args );
@@ -30,16 +30,16 @@ private:
 
 
 
-class def_function_stmt : public executable_stmt
+class def_function_stmt : public yuki::statements::executable_stmt
 {
 public:
-	explicit def_function_stmt(const std::string & identifier, std::vector<std::string> && args, std::unique_ptr<executable_stmt> && body );
+	explicit def_function_stmt(const std::string & identifier, std::vector<std::string> && args, std::unique_ptr<yuki::statements::executable_stmt> && body );
 	void execute(yuki::context::context_stack & stack) override;
 
 private:
 	std::string m_identifier;
 	std::vector<std::string> m_args;
-	std::unique_ptr<executable_stmt> m_body;
+	std::unique_ptr<yuki::statements::executable_stmt> m_body;
 };
 
 

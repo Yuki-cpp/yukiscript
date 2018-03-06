@@ -1,3 +1,18 @@
 
 
 add_subdirectory(type_support)
+
+add_subdirectory(statements)
+target_include_directories(yuki_stmt PUBLIC type_support)
+target_include_directories(yuki_stmt PUBLIC context)
+target_include_directories(yuki_stmt PUBLIC statements)
+
+add_subdirectory(context)
+target_include_directories(yuki_context PUBLIC type_support)
+target_include_directories(yuki_context PUBLIC statements)
+target_include_directories(yuki_context PUBLIC context)
+
+add_subdirectory(generators)
+target_include_directories(yuki_stmts_generators PUBLIC type_support)
+target_include_directories(yuki_stmts_generators PUBLIC statements)
+target_include_directories(yuki_stmts_generators PUBLIC generators)
