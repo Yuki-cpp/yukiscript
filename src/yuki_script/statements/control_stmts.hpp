@@ -23,11 +23,12 @@ private:
 class if_stmt : public yuki::statements::executable_stmt
 {
 public:
-	explicit if_stmt(std::unique_ptr<yuki::statements::evaluable_stmt> condition, std::unique_ptr<yuki::statements::compound_stmt> body);
+	explicit if_stmt(std::unique_ptr<yuki::statements::evaluable_stmt> condition, std::unique_ptr<yuki::statements::compound_stmt> body, std::unique_ptr<yuki::statements::compound_stmt> else_body);
 	void execute(yuki::context::context_stack & stack) override;
 private:
 	std::unique_ptr<yuki::statements::evaluable_stmt> m_condition;
 	std::unique_ptr<yuki::statements::compound_stmt> m_body;
+	std::unique_ptr<yuki::statements::compound_stmt> m_else_body;
 };
 
 

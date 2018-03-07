@@ -62,7 +62,7 @@ std::unique_ptr<yuki::statements::executable_stmt> yuki::generators::generate_ex
 	{
 		return generate_while_stmt(tokens);
 	}
-	else if(tokens.size() == 3 && tokens[0] == "if")
+	else if((tokens.size() == 3 || tokens.size() == 4) && tokens[0] == "if")
 	{
 		return generate_if_stmt(tokens);
 	}

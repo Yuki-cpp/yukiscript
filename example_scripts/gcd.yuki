@@ -21,4 +21,15 @@
 	))
 ))
 
-(gcd (15 14))
+(var x)
+(set x (gcd (28 14)))
+
+(if (== x 1)
+(
+	(print "Coprimes")
+	(print '\n')
+)
+(
+	(print "Not_coprimes")
+	(print '\n')
+))
