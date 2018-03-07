@@ -20,7 +20,7 @@ void parse(const std::string & code)
 	}
 	else
 	{
-		std::cout << "Syntax error" << std::endl;
+		std::cout << "Terminated without executing..." << std::endl;
 	}
 }
 
