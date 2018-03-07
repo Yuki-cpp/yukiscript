@@ -30,6 +30,6 @@
 	(print '\n')
 )
 (
-	(print "Not_coprimes")
+	(print "Not coprimes")
 	(print '\n')
 ))

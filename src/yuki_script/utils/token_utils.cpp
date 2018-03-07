@@ -60,10 +60,16 @@ std::vector<std::string> yuki::utils::separate_tokens(std::string code)
 	std::vector<std::string> tokens;
 	std::string current_token = "";
 	std::size_t depth = 0;
-
+	bool in_string = false;
+	
 	for(auto c : code)
 	{
-		if(c == ' ' && depth == 0)
+		if(c == '"')
+		{
+			in_string = !in_string;
+		}
+		
+		if(c == ' ' && depth == 0 && !in_string)
 		{
 			if(current_token != "")
 			{
