@@ -1,5 +1,7 @@
 #include "generators.hpp"
 
+#include <iostream>
+
 #include "op_generators.hpp"
 #include "var_generators.hpp"
 #include "control_generators.hpp"
@@ -32,7 +34,8 @@ std::unique_ptr<yuki::statements::evaluable_stmt> yuki::generators::generate_eva
 	{
 		return generate_call_function(tokens);
 	}
-
+	
+	std::cout << root_token << std::endl;
 	return nullptr;
 }
 
