@@ -6,7 +6,7 @@
 #include "generators/generators.hpp"
 #include "utils/utils.hpp"
 
-void parse(const std::string & code)
+void parse(std::ostream & os , const std::string & code)
 {
 	std::string processed_code = code;
 	yuki::utils::process_whitespaces(processed_code);
@@ -20,7 +20,7 @@ void parse(const std::string & code)
 	}
 	else
 	{
-		std::cout << "Terminated without executing..." << std::endl;
+		os << "Terminated without executing..." << std::endl;
 	}
 }
 
@@ -35,11 +35,11 @@ int main(int argc, char** argv)
 
 		if(argc >= 3 && std::string("debug") == argv[2])
 		{
-			yuki::utils::print_tree(code,std::cout);
+			yuki::utils::print_tree(code, std::cout);
 		}
 		else
 		{
-			parse(code);
+			parse(std::cout, code);
 		}
 	}
 }
