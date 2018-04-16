@@ -43,9 +43,9 @@ public:
 	explicit variable(const yuki::type::internal::type & value):
 		m_value(value)
 	{}
-
-	variable logical_or(const variable & other) const;
-	variable logical_and(const variable & other) const;
+	
+	variable operator&&(const variable & other) const;
+	variable operator||(const variable & other) const;
 
 	variable operator<(const variable & other) const;
 	variable operator==(const variable & other) const;

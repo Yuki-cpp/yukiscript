@@ -40,15 +40,15 @@ std::ostream& yuki::type::operator<<(std::ostream& os, const yuki::type::variabl
 }
 
 
-yuki::type::variable yuki::type::variable::logical_or(const yuki::type::variable& other) const
+yuki::type::variable yuki::type::variable::operator&&(const yuki::type::variable& other) const
 {
-	return variable(operator bool() || other.operator bool());
+	return variable(operator bool() && other.operator bool());
 }
 
 
-yuki::type::variable yuki::type::variable::logical_and(const yuki::type::variable& other) const
+yuki::type::variable yuki::type::variable::operator||(const yuki::type::variable& other) const
 {
-	return variable(operator bool() && other.operator bool());
+	return variable(operator bool() || other.operator bool());
 }
 
 
@@ -116,13 +116,13 @@ yuki::type::variable yuki::type::variable::operator!() const
 
 yuki::type::variable yuki::type::variable::operator>(const yuki::type::variable& other) const
 {
-	return !(operator<(other).logical_or(operator==(other)));
+	return !(operator<(other) || operator==(other));
 }
 
 
 yuki::type::variable yuki::type::variable::operator<=(const yuki::type::variable& other) const
 {
-	return operator<(other).logical_or(operator==(other));
+	return operator<(other) || operator==(other);
 }
 
 yuki::type::variable yuki::type::variable::operator>=(const yuki::type::variable& other) const

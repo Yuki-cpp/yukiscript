@@ -4,14 +4,14 @@
 yuki::statements::or_stmt::or_stmt(std::unique_ptr<yuki::statements::evaluable_stmt> && lhs, std::unique_ptr<yuki::statements::evaluable_stmt> && rhs):
 	binary_op_stmt<binary_op_callback>(std::move(lhs), std::move(rhs), [](const yuki::type::variable & lhs_var, const yuki::type::variable & rhs_var)
 {
-	return lhs_var.logical_or(rhs_var);
+	return lhs_var || rhs_var;
 })
 {}
 
 yuki::statements::and_stmt::and_stmt(std::unique_ptr<yuki::statements::evaluable_stmt> && lhs, std::unique_ptr<yuki::statements::evaluable_stmt> && rhs):
 	binary_op_stmt<binary_op_callback>(std::move(lhs), std::move(rhs), [](const yuki::type::variable & lhs_var, const yuki::type::variable & rhs_var)
 {
-	return lhs_var.logical_and(rhs_var);
+	return lhs_var && rhs_var;
 })
 {}
 
