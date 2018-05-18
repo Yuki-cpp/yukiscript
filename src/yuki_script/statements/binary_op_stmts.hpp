@@ -13,11 +13,10 @@ namespace yuki::statements
 
 using binary_op_callback = std::function<yuki::type::variable(const yuki::type::variable & , const yuki::type::variable &)>;
 
-template<class T>
 class binary_op_stmt : public yuki::statements::evaluable_stmt
 {
 public:
-	explicit binary_op_stmt(std::unique_ptr<yuki::statements::evaluable_stmt> && lhs, std::unique_ptr<yuki::statements::evaluable_stmt> && rhs, T predicate):
+	explicit binary_op_stmt(std::unique_ptr<yuki::statements::evaluable_stmt> && lhs, std::unique_ptr<yuki::statements::evaluable_stmt> && rhs, const binary_op_callback & predicate):
 		m_lhs(std::move(lhs)),
 		m_rhs(std::move(rhs)),
 		m_predicate(predicate)
@@ -33,18 +32,18 @@ public:
 private:
 	std::unique_ptr<yuki::statements::evaluable_stmt> m_lhs;
 	std::unique_ptr<yuki::statements::evaluable_stmt> m_rhs;
-	T m_predicate;
+	binary_op_callback m_predicate;
 
 };
 
 
-class or_stmt : public binary_op_stmt<binary_op_callback>
+class or_stmt : public binary_op_stmt
 {
 public:
 	explicit or_stmt(std::unique_ptr<yuki::statements::evaluable_stmt> && lhs, std::unique_ptr<yuki::statements::evaluable_stmt> && rhs);
 };
 
-class and_stmt : public binary_op_stmt<binary_op_callback>
+class and_stmt : public binary_op_stmt
 {
 public:
 	explicit and_stmt(std::unique_ptr<yuki::statements::evaluable_stmt> && lhs, std::unique_ptr<yuki::statements::evaluable_stmt> && rhs);
@@ -52,37 +51,37 @@ public:
 
 
 
-class l_stmt : public binary_op_stmt<binary_op_callback>
+class l_stmt : public binary_op_stmt
 {
 public:
 	explicit l_stmt(std::unique_ptr<yuki::statements::evaluable_stmt> && lhs, std::unique_ptr<yuki::statements::evaluable_stmt> && rhs);
 };
 
-class leq_stmt : public binary_op_stmt<binary_op_callback>
+class leq_stmt : public binary_op_stmt
 {
 public:
 	explicit leq_stmt(std::unique_ptr<yuki::statements::evaluable_stmt> && lhs, std::unique_ptr<yuki::statements::evaluable_stmt> && rhs);
 };
 
-class g_stmt : public binary_op_stmt<binary_op_callback>
+class g_stmt : public binary_op_stmt
 {
 public:
 	explicit g_stmt(std::unique_ptr<yuki::statements::evaluable_stmt> && lhs, std::unique_ptr<yuki::statements::evaluable_stmt> && rhs);
 };
 
-class geq_stmt : public binary_op_stmt<binary_op_callback>
+class geq_stmt : public binary_op_stmt
 {
 public:
 	explicit geq_stmt(std::unique_ptr<yuki::statements::evaluable_stmt> && lhs, std::unique_ptr<yuki::statements::evaluable_stmt> && rhs);
 };
 
-class eq_stmt : public binary_op_stmt<binary_op_callback>
+class eq_stmt : public binary_op_stmt
 {
 public:
 	explicit eq_stmt(std::unique_ptr<yuki::statements::evaluable_stmt> && lhs, std::unique_ptr<yuki::statements::evaluable_stmt> && rhs);
 };
 
-class neq_stmt : public binary_op_stmt<binary_op_callback>
+class neq_stmt : public binary_op_stmt
 {
 public:
 	explicit neq_stmt(std::unique_ptr<yuki::statements::evaluable_stmt> && lhs, std::unique_ptr<yuki::statements::evaluable_stmt> && rhs);
@@ -90,31 +89,31 @@ public:
 
 
 
-class addition_stmt : public binary_op_stmt<binary_op_callback>
+class addition_stmt : public binary_op_stmt
 {
 public:
 	explicit addition_stmt(std::unique_ptr<yuki::statements::evaluable_stmt> && lhs, std::unique_ptr<yuki::statements::evaluable_stmt> && rhs);
 };
 
-class substraction_stmt : public binary_op_stmt<binary_op_callback>
+class substraction_stmt : public binary_op_stmt
 {
 public:
 	explicit substraction_stmt(std::unique_ptr<yuki::statements::evaluable_stmt> && lhs, std::unique_ptr<yuki::statements::evaluable_stmt> && rhs);
 };
 
-class multiplication_stmt : public binary_op_stmt<binary_op_callback>
+class multiplication_stmt : public binary_op_stmt
 {
 public:
 	explicit multiplication_stmt(std::unique_ptr<yuki::statements::evaluable_stmt> && lhs, std::unique_ptr<yuki::statements::evaluable_stmt> && rhs);
 };
 
-class division_stmt : public binary_op_stmt<binary_op_callback>
+class division_stmt : public binary_op_stmt
 {
 public:
 	explicit division_stmt(std::unique_ptr<yuki::statements::evaluable_stmt> && lhs, std::unique_ptr<yuki::statements::evaluable_stmt> && rhs);
 };
 
-class modulo_stmt : public binary_op_stmt<binary_op_callback>
+class modulo_stmt : public binary_op_stmt
 {
 public:
 	explicit modulo_stmt(std::unique_ptr<yuki::statements::evaluable_stmt> && lhs, std::unique_ptr<yuki::statements::evaluable_stmt> && rhs);
