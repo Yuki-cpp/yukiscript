@@ -39,7 +39,7 @@ private:
 class unary_neg_stmt : public unary_op_stmt<unary_op_callback>
 {
 public:
-	unary_neg_stmt(std::unique_ptr< yuki::statements::evaluable_stmt >&& value);
+	explicit unary_neg_stmt(std::unique_ptr< yuki::statements::evaluable_stmt >&& value);
 };
 
 class unary_not_stmt : public unary_op_stmt<unary_op_callback>
