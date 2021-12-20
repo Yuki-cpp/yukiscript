@@ -5,7 +5,6 @@ project(math)
 
 set(CMAKE_VERBOSE_MAKEFILE OFF)
 
-set(CMAKE_CXX_COMPILER /usr/bin/g++-7)
 set(CMAKE_CXX_FLAGS "-std=c++17 -Wall -Wextra -Wshadow -Wnon-virtual-dtor -pedantic")
 
 add_subdirectory(src)
