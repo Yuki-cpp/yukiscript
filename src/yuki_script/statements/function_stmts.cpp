@@ -27,7 +27,7 @@ m_args(std::move(args))
 
 yuki::type::variable yuki::statements::call_function_stmt::evaluate(yuki::context::context_stack& stack)
 {
-	auto & base_context = stack.current_context();
+	const auto & base_context = stack.current_context();
 	auto [body, function_args] = stack.get_function(m_identifier);
 
 	if(body && function_args.size() == m_args.size())
@@ -42,7 +42,7 @@ yuki::type::variable yuki::statements::call_function_stmt::evaluate(yuki::contex
 			{
 				return stack.get_variable(value);
 			},
-			[&stack](std::unique_ptr<yuki::statements::evaluable_stmt> & value)
+			[&stack](const std::unique_ptr<yuki::statements::evaluable_stmt> & value)
 			{
 				return value->evaluate(stack);
 			}
@@ -66,7 +66,7 @@ yuki::type::variable yuki::statements::call_function_stmt::evaluate(yuki::contex
 				{
 					base_context.get_variable(value) = var;
 				},
-				[](std::unique_ptr<yuki::statements::evaluable_stmt> & value)
+				[](const std::unique_ptr<yuki::statements::evaluable_stmt> & value)
 				{
 					(void)value;
 				}

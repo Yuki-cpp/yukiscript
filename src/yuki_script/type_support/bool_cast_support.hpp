@@ -4,6 +4,7 @@
 
 #include <string>
 
+
 #include "type_support.hpp"
 
 
@@ -27,7 +28,7 @@ inline bool bool_cast(const T & val)
 /**
 * @brief Cast a string to bool
 */
-inline bool bool_cast(const std::string & val)
+inline bool bool_cast(const std::string& val)
 {
 	return val != "";
 }
@@ -52,7 +53,7 @@ inline bool bool_cast(bool b)
 * @brief Specialized visitor casting an element to bool
 *
 */
-inline yuki::type::internal::type_visitor bool_cast_visitor
+inline const yuki::type::internal::type_visitor bool_cast_visitor
 {
 	[](auto & t1)
 	{
@@ -87,7 +88,7 @@ inline yuki::type::internal::type not_op(bool val)
 * @brief Specialized visitor performing the not operation on an element
 *
 */
-inline yuki::type::internal::type_visitor not_visitor
+inline const yuki::type::internal::type_visitor not_visitor
 {
 	[](auto & t1)
 	{

@@ -18,17 +18,17 @@ namespace yuki::type::internal
 template<typename T, typename U>
 constexpr bool  are_multiplicable = false;
 
-template<> constexpr bool  are_multiplicable<int, int> = true;
-template<> constexpr bool  are_multiplicable<int, double> = true;
-template<> constexpr bool  are_multiplicable<int, char> = true;
+template<> constexpr inline bool  are_multiplicable<int, int> = true;
+template<> constexpr inline bool  are_multiplicable<int, double> = true;
+template<> constexpr inline bool  are_multiplicable<int, char> = true;
 
-template<> constexpr bool  are_multiplicable<double, int> = true;
-template<> constexpr bool  are_multiplicable<double, double> = true;
-template<> constexpr bool  are_multiplicable<double, char> = true;
+template<> constexpr inline bool  are_multiplicable<double, int> = true;
+template<> constexpr inline bool  are_multiplicable<double, double> = true;
+template<> constexpr inline bool  are_multiplicable<double, char> = true;
 
-template<> constexpr bool  are_multiplicable<char, int> = true;
-template<> constexpr bool  are_multiplicable<char, double> = true;
-template<> constexpr bool  are_multiplicable<char, char> = true;
+template<> constexpr inline bool  are_multiplicable<char, int> = true;
+template<> constexpr inline bool  are_multiplicable<char, double> = true;
+template<> constexpr inline bool  are_multiplicable<char, char> = true;
 
 
 
@@ -60,7 +60,7 @@ inline yuki::type::internal::type multiply(const T & lhs, const U & rhs)
 * @brief Specialized visitor performing a multiplication between two elements
 *
 */
-inline yuki::type::internal::type_visitor multiplication_visitor
+inline const yuki::type::internal::type_visitor multiplication_visitor
 {
 	[](auto & t1, auto & t2)
 	{

@@ -18,20 +18,20 @@ namespace yuki::type::internal
 template<typename T, typename U>
 constexpr bool  are_comparable = false;
 
-template<> constexpr bool  are_comparable<int, int> = true;
-template<> constexpr bool  are_comparable<int, double> = true;
-template<> constexpr bool  are_comparable<int, char> = true;
+template<> constexpr inline bool  are_comparable<int, int> = true;
+template<> constexpr inline bool  are_comparable<int, double> = true;
+template<> constexpr inline bool  are_comparable<int, char> = true;
 
-template<> constexpr bool  are_comparable<double, int> = true;
-template<> constexpr bool  are_comparable<double, double> = true;
-template<> constexpr bool  are_comparable<double, char> = true;
+template<> constexpr inline bool  are_comparable<double, int> = true;
+template<> constexpr inline bool  are_comparable<double, double> = true;
+template<> constexpr inline bool  are_comparable<double, char> = true;
 
-template<> constexpr bool  are_comparable<char, int> = true;
-template<> constexpr bool  are_comparable<char, double> = true;
-template<> constexpr bool  are_comparable<char, char> = true;
+template<> constexpr inline bool  are_comparable<char, int> = true;
+template<> constexpr inline bool  are_comparable<char, double> = true;
+template<> constexpr inline bool  are_comparable<char, char> = true;
 
-template<> constexpr bool  are_comparable<bool, bool> = true;
-template<> constexpr bool  are_comparable<std::string, std::string> = true;
+template<> constexpr inline bool  are_comparable<bool, bool> = true;
+template<> constexpr inline bool  are_comparable<std::string, std::string> = true;
 
 /**
 * @brief Function performing the actual equality comparaison operation between two elements
@@ -100,7 +100,7 @@ inline yuki::type::internal::type lesser_than(const T & lhs, const U & rhs)
 * @brief Specialized visitor performing a lesser than comparaison between two elements
 *
 */
-inline yuki::type::internal::type_visitor l_visitor
+inline const yuki::type::internal::type_visitor l_visitor
 {
 	[](auto & t1, auto & t2)
 	{

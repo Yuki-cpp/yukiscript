@@ -18,19 +18,19 @@ namespace yuki::type::internal
 template<typename T, typename U>
 constexpr bool  are_aditionable = false;
 
-template<> constexpr bool  are_aditionable<int, int> = true;
-template<> constexpr bool  are_aditionable<int, double> = true;
-template<> constexpr bool  are_aditionable<int, char> = true;
+template<> constexpr inline bool  are_aditionable<int, int> = true;
+template<> constexpr inline bool  are_aditionable<int, double> = true;
+template<> constexpr inline bool  are_aditionable<int, char> = true;
 
-template<> constexpr bool  are_aditionable<double, int> = true;
-template<> constexpr bool  are_aditionable<double, double> = true;
-template<> constexpr bool  are_aditionable<double, char> = true;
+template<> constexpr inline bool  are_aditionable<double, int> = true;
+template<> constexpr inline bool  are_aditionable<double, double> = true;
+template<> constexpr inline bool  are_aditionable<double, char> = true;
 
-template<> constexpr bool  are_aditionable<char, int> = true;
-template<> constexpr bool  are_aditionable<char, double> = true;
-template<> constexpr bool  are_aditionable<char, char> = true;
+template<> constexpr inline bool  are_aditionable<char, int> = true;
+template<> constexpr inline bool  are_aditionable<char, double> = true;
+template<> constexpr inline bool  are_aditionable<char, char> = true;
 
-template<> constexpr bool  are_aditionable<std::string, std::string> = true;
+template<> constexpr inline bool  are_aditionable<std::string, std::string> = true;
 
 /**
 * @brief Function performing the actual addition operation between two elements
@@ -60,7 +60,7 @@ inline yuki::type::internal::type add(const T & lhs, const U & rhs)
 * @brief Specialized visitor performing a addition between two elements
 *
 */
-inline yuki::type::internal::type_visitor addition_visitor
+inline const yuki::type::internal::type_visitor addition_visitor
 {
 	[](auto & t1, auto & t2)
 	{

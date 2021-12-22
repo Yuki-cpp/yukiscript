@@ -18,17 +18,17 @@ namespace yuki::type::internal
 template<typename T, typename U>
 constexpr bool  are_substractable = false;
 
-template<> constexpr bool  are_substractable<int, int> = true;
-template<> constexpr bool  are_substractable<int, double> = true;
-template<> constexpr bool  are_substractable<int, char> = true;
+template<> constexpr inline bool  are_substractable<int, int> = true;
+template<> constexpr inline bool  are_substractable<int, double> = true;
+template<> constexpr inline bool  are_substractable<int, char> = true;
 
-template<> constexpr bool  are_substractable<double, int> = true;
-template<> constexpr bool  are_substractable<double, double> = true;
-template<> constexpr bool  are_substractable<double, char> = true;
+template<> constexpr inline bool  are_substractable<double, int> = true;
+template<> constexpr inline bool  are_substractable<double, double> = true;
+template<> constexpr inline bool  are_substractable<double, char> = true;
 
-template<> constexpr bool  are_substractable<char, int> = true;
-template<> constexpr bool  are_substractable<char, double> = true;
-template<> constexpr bool  are_substractable<char, char> = true;
+template<> constexpr inline bool  are_substractable<char, int> = true;
+template<> constexpr inline bool  are_substractable<char, double> = true;
+template<> constexpr inline bool  are_substractable<char, char> = true;
 
 
 
@@ -63,7 +63,7 @@ inline yuki::type::internal::type substract(const T & lhs, const U & rhs)
 * @brief Specialized visitor performing a substraction between two elements
 *
 */
-inline yuki::type::internal::type_visitor substraction_visitor
+inline const yuki::type::internal::type_visitor substraction_visitor
 {
 	[](auto & t1, auto & t2)
 	{
@@ -77,7 +77,7 @@ inline yuki::type::internal::type_visitor substraction_visitor
 * @brief Specialized visitor performing the negation of a single element
 *
 */
-inline yuki::type::internal::type_visitor neg_visitor
+inline const yuki::type::internal::type_visitor neg_visitor
 {
 	[](auto & t1)
 	{

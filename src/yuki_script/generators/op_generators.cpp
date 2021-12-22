@@ -14,9 +14,9 @@ std::unique_ptr<yuki::statements::evaluable_stmt> yuki::generators::generate_bin
 	assert(yuki::utils::is_binary_operator(tokens[0]));
 
 	std::unique_ptr<yuki::statements::evaluable_stmt> lhs = generate_evaluable_stmt(tokens[1]);
-	std::unique_ptr<yuki::statements::evaluable_stmt> rhs = generate_evaluable_stmt(tokens[2]);
 
-	if(lhs && rhs)
+	if(std::unique_ptr<yuki::statements::evaluable_stmt> rhs = generate_evaluable_stmt(tokens[2]); 
+	lhs && rhs)
 	{
 		if(tokens[0] == "&&")
 			return std::make_unique<yuki::statements::and_stmt>(std::move(lhs), std::move(rhs));
@@ -56,8 +56,7 @@ std::unique_ptr<yuki::statements::evaluable_stmt> yuki::generators::generate_una
 	assert(tokens.size() == 2);
 	assert(yuki::utils::is_unary_operator(tokens[0]));
 
-	std::unique_ptr<yuki::statements::evaluable_stmt> val = generate_evaluable_stmt(tokens[1]);
-	if(val)
+	if(std::unique_ptr<yuki::statements::evaluable_stmt> val = generate_evaluable_stmt(tokens[1]))
 	{
 		if(tokens[0] == "-")
 			return std::make_unique<yuki::statements::unary_neg_stmt>(std::move(val));

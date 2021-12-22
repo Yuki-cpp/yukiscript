@@ -118,8 +118,8 @@ std::tuple<yuki::statements::executable_stmt *, std::vector<std::string> > yuki:
 
 void yuki::context::context::push_block()
 {
-	m_known_variables.push_back(context::variable_block_context {});
-	m_known_functions.push_back(context::function_block_context {});
+	m_known_variables.emplace_back();
+	m_known_functions.emplace_back();
 }
 
 void yuki::context::context::pop_block()

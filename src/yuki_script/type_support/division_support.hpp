@@ -18,17 +18,17 @@ namespace yuki::type::internal
 template<typename T, typename U>
 constexpr bool  are_dividable = false;
 
-template<> constexpr bool  are_dividable<int, int> = true;
-template<> constexpr bool  are_dividable<int, double> = true;
-template<> constexpr bool  are_dividable<int, char> = true;
+template<> constexpr inline bool  are_dividable<int, int> = true;
+template<> constexpr inline bool  are_dividable<int, double> = true;
+template<> constexpr inline bool  are_dividable<int, char> = true;
 
-template<> constexpr bool  are_dividable<double, int> = true;
-template<> constexpr bool  are_dividable<double, double> = true;
-template<> constexpr bool  are_dividable<double, char> = true;
+template<> constexpr inline bool  are_dividable<double, int> = true;
+template<> constexpr inline bool  are_dividable<double, double> = true;
+template<> constexpr inline bool  are_dividable<double, char> = true;
 
-template<> constexpr bool  are_dividable<char, int> = true;
-template<> constexpr bool  are_dividable<char, double> = true;
-template<> constexpr bool  are_dividable<char, char> = true;
+template<> constexpr inline bool  are_dividable<char, int> = true;
+template<> constexpr inline bool  are_dividable<char, double> = true;
+template<> constexpr inline bool  are_dividable<char, char> = true;
 
 
 
@@ -64,7 +64,7 @@ inline yuki::type::internal::type divide(const T & lhs, const U & rhs)
 * @brief Specialized visitor performing a division between two elements
 *
 */
-inline yuki::type::internal::type_visitor division_visitor
+inline const yuki::type::internal::type_visitor division_visitor
 {
 	[](auto & t1, auto & t2)
 	{

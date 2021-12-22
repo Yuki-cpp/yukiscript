@@ -12,12 +12,9 @@ namespace yuki::type
 class variable
 {
 public:
-	variable():
-		m_value(nullptr)
-	{}
+	variable()=default;
 
-	variable(std::nullptr_t):
-		m_value(nullptr)
+	explicit variable(std::nullptr_t)
 	{}
 
 	explicit variable(bool value):
@@ -63,13 +60,13 @@ public:
 	variable operator-() const;
 	variable operator!() const;
 
-	operator bool() const;
+	explicit operator bool() const;
 
 	friend std::ostream& operator<<(std::ostream& os, const yuki::type::variable& var);
 
 private:
 
-	yuki::type::internal::type m_value;
+	yuki::type::internal::type m_value = nullptr;
 };
 
 std::ostream& operator<<(std::ostream& os, const yuki::type::variable& var);

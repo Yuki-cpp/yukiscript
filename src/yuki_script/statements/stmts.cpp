@@ -16,7 +16,7 @@ yuki::statements::compound_stmt::compound_stmt(std::vector<std::unique_ptr<execu
 void yuki::statements::compound_stmt::execute(yuki::context::context_stack& stack)
 {
 	yuki::context::context_block_guard guard(stack.current_context());
-	for(auto & statement : m_sub_statements)
+	for(const auto & statement : m_sub_statements)
 	{
 		statement->execute(stack);
 	}

@@ -27,7 +27,7 @@ class evaluable_stmt : public executable_stmt
 {
 public:
 	virtual  yuki::type::variable evaluate( yuki::context::context_stack & stack) = 0;
-	virtual ~evaluable_stmt() = default;
+	~evaluable_stmt() override = default;
 private:
 	void execute(yuki::context::context_stack & stack) override;
 };

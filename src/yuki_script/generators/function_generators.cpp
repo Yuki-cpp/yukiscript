@@ -43,7 +43,7 @@ std::unique_ptr<yuki::statements::call_function_stmt> yuki::generators::generate
 	{
 		if(yuki::utils::is_user_defined(token))
 		{
-			arguments.push_back(token);
+			arguments.emplace_back(token);
 		}
 		else
 		{
@@ -52,7 +52,7 @@ std::unique_ptr<yuki::statements::call_function_stmt> yuki::generators::generate
 			{
 				return nullptr;
 			}
-			arguments.push_back(std::move(eval));
+			arguments.emplace_back(std::move(eval));
 		}
 	}
 

@@ -18,11 +18,11 @@ namespace yuki::type::internal
 template<typename T, typename U>
 constexpr bool  are_modulable = false;
 
-template<> constexpr bool  are_modulable<int, int> = true;
-template<> constexpr bool  are_modulable<int, char> = true;
+template<> constexpr inline bool  are_modulable<int, int> = true;
+template<> constexpr inline bool  are_modulable<int, char> = true;
 
-template<> constexpr bool  are_modulable<char, int> = true;
-template<> constexpr bool  are_modulable<char, char> = true;
+template<> constexpr inline bool  are_modulable<char, int> = true;
+template<> constexpr inline bool  are_modulable<char, char> = true;
 
 
 
@@ -60,7 +60,7 @@ inline yuki::type::internal::type modulo(const T & lhs, const U & rhs)
 * @brief Specialized visitor performing a modulo operation between two elements
 *
 */
-inline yuki::type::internal::type_visitor modulo_visitor
+inline const yuki::type::internal::type_visitor modulo_visitor
 {
 	[](auto & t1, auto & t2)
 	{

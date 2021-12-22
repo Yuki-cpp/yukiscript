@@ -12,9 +12,10 @@
 
 std::unique_ptr<yuki::statements::evaluable_stmt> yuki::generators::generate_evaluable_stmt(const std::string& root_token)
 {
-	auto tokens = yuki::utils::separate_tokens(root_token);
+	
 
-	if(tokens.size() == 3 && yuki::utils::is_binary_operator(tokens[0]))
+	if( auto tokens = yuki::utils::separate_tokens(root_token);
+	tokens.size() == 3 && yuki::utils::is_binary_operator(tokens[0]))
 	{
 		return generate_binary_op_stmt(tokens);
 	}
@@ -45,7 +46,7 @@ std::unique_ptr<yuki::statements::executable_stmt> yuki::generators::generate_ex
 {
 	auto tokens = yuki::utils::separate_tokens(root_token);
 
-	if(tokens.size() > 0 && tokens[0][0] == '(')
+	if(!tokens.empty() && tokens[0][0] == '(')
 	{
 		return generate_compound_stmt(tokens);
 	}
