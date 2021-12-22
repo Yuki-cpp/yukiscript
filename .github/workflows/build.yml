@@ -12,8 +12,9 @@ jobs:
     runs-on: ubuntu-latest
     container:
       image: ghcr.io/yuki-cpp/ubuntu_20_04:gcc-11
-      username: ${{ github.actor }}
-      password: ${{ secrets.GITHUB_TOKEN }}
+      credentials:
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - uses: actions/checkout@v2
