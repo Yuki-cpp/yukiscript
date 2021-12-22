@@ -22,7 +22,7 @@ jobs:
           fetch-depth: 0
       - name: Install boost
         run: |
-          sudo apt install -y libboost-dev
+          apt install -y libboost-dev
       - name: Run build-wrapper
         run: |
           mkdir build
