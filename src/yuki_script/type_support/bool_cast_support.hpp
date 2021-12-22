@@ -35,7 +35,7 @@ inline bool bool_cast(const std::string & val)
 /**
 * @brief Cast a nullptr_t to bool
 */
-inline bool bool_cast(nullptr_t)
+inline bool bool_cast(std::nullptr_t)
 {
 	return false;
 }

@@ -20,7 +20,7 @@ namespace
 		os << val;
 	}
 	
-	void print(std::ostream& os, nullptr_t)
+	void print(std::ostream& os, std::nullptr_t)
 	{
 		os << "nil";
 	}
