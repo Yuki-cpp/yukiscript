@@ -16,7 +16,7 @@ public:
 		m_value(nullptr)
 	{}
 
-	variable(nullptr_t):
+	variable(std::nullptr_t):
 		m_value(nullptr)
 	{}
 
