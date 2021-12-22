@@ -17,8 +17,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-          with:
-            fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
+        with:
+          fetch-depth: 0
       - name: Install boost
         run: |
           sudo apt install -y libboost-dev
