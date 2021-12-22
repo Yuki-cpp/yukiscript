@@ -2,7 +2,7 @@
 
 #include <cassert>
 #include <stack>
-
+#include <stdexcept>
 
 #include "context.hpp"
 

@@ -5,6 +5,7 @@
 #include <memory>
 #include <algorithm>
 #include <cassert>
+#include <stdexcept>
 
 #include "statements/stmts.hpp"
 
