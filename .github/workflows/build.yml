@@ -10,7 +10,8 @@ jobs:
   build:
     name: Build
     runs-on: ubuntu-latest
-    image: ghcr.io/yuki-cpp/ubuntu_20_04:gcc-11
+    container:
+      image: ghcr.io/yuki-cpp/ubuntu_20_04:gcc-11
       username: ${{ github.actor }}
       password: ${{ secrets.GITHUB_TOKEN }}
 
